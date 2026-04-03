@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Disease Library</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>Disease Library</h1>
+      <p>Search or scroll diseases</p>
+    </header>
+
+    <nav>
+      <input
+        type="text"
+        id="search"
+        placeholder="Search disease..."
+        onkeyup="showSuggestions()"
+      />
+      <button onclick="searchDisease()">🔍</button>
+      <button onclick="toggleDark()">🌙</button>
+      <div id="suggestions"></div>
+    </nav>
+
+    <script>
+      const diseases = [
+        "dengue fever",
+        "tuberculosis",
+        "influenza",
+        "pneumonia",
+        "covid-19",
+        "measles",
+        "chickenpox",
+        "hepatitis b",
+        "leptospirosis",
+        "typhoid fever",
+        "cholera",
+        "malaria",
+        "rabies",
+        "hiv/aids",
+        "hand, foot, and mouth disease",
+        "hypertension",
+        "diabetes mellitus",
+        "heart disease",
+        "stroke",
+        "cancer",
+        "chronic kidney disease",
+        "asthma",
+        "chronic obstructive pulmonary disease",
+        "arthritis",
+        "obesity",
+        "diarrheal diseases",
+        "skin diseases",
+        "eye infections",
+        "dental caries",
+        "anemia",
+      ];
+
+      function showSuggestions() {
+        let input = document.getElementById("search").value.toLowerCase();
+        let box = document.getElementById("suggestions");
+        box.innerHTML = "";
+
+        if (input.length < 2) return;
+
+        diseases.forEach((d) => {
+          if (d.includes(input)) {
+            let div = document.createElement("div");
+            div.innerHTML = d;
+            div.onclick = () => {
+              document.getElementById("search").value = d;
+              box.innerHTML = "";
+            };
+            box.appendChild(div);
+          }
+        });
+      }
+
+      function searchDisease() {
+        let input = document
+          .getElementById("search")
+          .value.toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-");
+        let el = document.getElementById(input);
+
+        if (el) {
+          document
+            .querySelectorAll("section")
+            .forEach((s) => s.classList.remove("highlight"));
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          el.classList.add("highlight");
+        }
+      }
+
+      function toggleDark() {
+        document.body.classList.toggle("dark");
+      }
+    </script>
+
+    <section id="dengue-fever">
+      <h2>Dengue Fever</h2>
+      <p>Viral disease spread by mosquitoes.</p>
+      <h4>Symptoms</h4>
+      <p>Fever, headache, joint pain</p>
+      <h4>Prevention</h4>
+      <p>Avoid mosquito bites</p>
+      <h4>Treatment</h4>
+      <p>Rest and fluids</p>
+    </section>
+    <section id="tuberculosis">
+      <h2>Tuberculosis</h2>
+      <p>Bacterial lung infection.</p>
+      <h4>Symptoms</h4>
+      <p>Cough, weight loss</p>
+      <h4>Prevention</h4>
+      <p>Vaccination</p>
+      <h4>Treatment</h4>
+      <p>Antibiotics</p>
+    </section>
+    <section id="influenza">
+      <h2>Influenza</h2>
+      <p>Respiratory viral infection.</p>
+      <h4>Symptoms</h4>
+      <p>Fever, cough</p>
+      <h4>Prevention</h4>
+      <p>Vaccination</p>
+      <h4>Treatment</h4>
+      <p>Rest</p>
+    </section>
+    <section id="pneumonia">
+      <h2>Pneumonia</h2>
+      <p>Lung infection.</p>
+      <h4>Symptoms</h4>
+      <p>Chest pain, fever</p>
+      <h4>Prevention</h4>
+      <p>Vaccination</p>
+      <h4>Treatment</h4>
+      <p>Medication</p>
+    </section>
+    <section id="covid-19">
+      <h2>COVID-19</h2>
+      <p>Coronavirus disease.</p>
+      <h4>Symptoms</h4>
+      <p>Fever, cough</p>
+      <h4>Prevention</h4>
+      <p>Mask, vaccine</p>
+      <h4>Treatment</h4>
+      <p>Supportive care</p>
+    </section>
+    <section id="measles">
+      <h2>Measles</h2>
+      <p>Highly contagious virus.</p>
+      <h4>Symptoms</h4>
+      <p>Rash, fever</p>
+      <h4>Prevention</h4>
+      <p>Vaccination</p>
+      <h4>Treatment</h4>
+      <p>Supportive care</p>
+    </section>
+    <section id="chickenpox">
+      <h2>Chickenpox</h2>
+      <p>Viral skin infection.</p>
+      <h4>Symptoms</h4>
+      <p>Itchy rash</p>
+      <h4>Prevention</h4>
+      <p>Vaccination</p>
+      <h4>Treatment</h4>
+      <p>Rest</p>
+    </section>
+    <section id="hepatitis-b">
+      <h2>Hepatitis B</h2>
+      <p>Liver infection.</p>
+      <h4>Symptoms</h4>
+      <p>Fatigue</p>
+      <h4>Prevention</h4>
+      <p>Vaccination</p>
+      <h4>Treatment</h4>
+      <p>Medication</p>
+    </section>
+    <section id="leptospirosis">
+      <h2>Leptospirosis</h2>
+      <p>Bacterial infection.</p>
+      <h4>Symptoms</h4>
+      <p>Fever</p>
+      <h4>Prevention</h4>
+      <p>Avoid dirty water</p>
+      <h4>Treatment</h4>
+      <p>Antibiotics</p>
+    </section>
+    <section id="typhoid-fever">
+      <h2>Typhoid Fever</h2>
+      <p>Bacterial disease.</p>
+      <h4>Symptoms</h4>
+      <p>Fever</p>
+      <h4>Prevention</h4>
+      <p>Clean food</p>
+      <h4>Treatment</h4>
+      <p>Antibiotics</p>
+    </section>
+    <section id="cholera">
+      <h2>Cholera</h2>
+      <p>Waterborne disease.</p>
+      <h4>Symptoms</h4>
+      <p>Diarrhea</p>
+      <h4>Prevention</h4>
+      <p>Clean water</p>
+      <h4>Treatment</h4>
+      <p>Rehydration</p>
+    </section>
+    <section id="malaria">
+      <h2>Malaria</h2>
+      <p>Parasite infection.</p>
+      <h4>Symptoms</h4>
+      <p>Fever</p>
+      <h4>Prevention</h4>
+      <p>Mosquito nets</p>
+      <h4>Treatment</h4>
+      <p>Drugs</p>
+    </section>
+    <section id="rabies">
+      <h2>Rabies</h2>
+      <p>Viral disease.</p>
+      <h4>Symptoms</h4>
+      <p>Fear of water</p>
+      <h4>Prevention</h4>
+      <p>Vaccinate pets</p>
+      <h4>Treatment</h4>
+      <p>Immediate vaccine</p>
+    </section>
+    <section id="hiv-aids">
+      <h2>HIV/AIDS</h2>
+      <p>Immune system disease.</p>
+      <h4>Symptoms</h4>
+      <p>Fatigue</p>
+      <h4>Prevention</h4>
+      <p>Safe practices</p>
+      <h4>Treatment</h4>
+      <p>ART</p>
+    </section>
+    <section id="hand-foot-and-mouth-disease">
+      <h2>Hand, Foot, and Mouth Disease</h2>
+      <p>Viral illness.</p>
+      <h4>Symptoms</h4>
+      <p>Rash</p>
+      <h4>Prevention</h4>
+      <p>Hygiene</p>
+      <h4>Treatment</h4>
+      <p>Rest</p>
+    </section>
+    <section id="hypertension">
+      <h2>Hypertension</h2>
+      <p>High blood pressure.</p>
+      <h4>Symptoms</h4>
+      <p>Headache</p>
+      <h4>Prevention</h4>
+      <p>Healthy lifestyle</p>
+      <h4>Treatment</h4>
+      <p>Medication</p>
+    </section>
+    <section id="diabetes-mellitus">
+      <h2>Diabetes Mellitus</h2>
+      <p>Blood sugar disorder.</p>
+      <h4>Symptoms</h4>
+      <p>Frequent urination</p>
+      <h4>Prevention</h4>
+      <p>Healthy diet</p>
+      <h4>Treatment</h4>
+      <p>Insulin</p>
+    </section>
+    <section id="heart-disease">
+      <h2>Heart Disease</h2>
+      <p>Heart condition.</p>
+      <h4>Symptoms</h4>
+      <p>Chest pain</p>
+      <h4>Prevention</h4>
+      <p>Exercise</p>
+      <h4>Treatment</h4>
+      <p>Medication</p>
+    </section>
+    <section id="stroke">
+      <h2>Stroke</h2>
+      <p>Brain condition.</p>
+      <h4>Symptoms</h4>
+      <p>Weakness</p>
+      <h4>Prevention</h4>
+      <p>Control BP</p>
+      <h4>Treatment</h4>
+      <p>Emergency care</p>
+    </section>
+    <section id="cancer">
+      <h2>Cancer</h2>
+      <p>Cell growth disease.</p>
+      <h4>Symptoms</h4>
+      <p>Lumps</p>
+      <h4>Prevention</h4>
+      <p>Healthy lifestyle</p>
+      <h4>Treatment</h4>
+      <p>Therapy</p>
+    </section>
+    <section id="chronic-kidney-disease">
+      <h2>Chronic Kidney Disease</h2>
+      <p>Kidney damage.</p>
+      <h4>Symptoms</h4>
+      <p>Fatigue</p>
+      <h4>Prevention</h4>
+      <p>Control sugar</p>
+      <h4>Treatment</h4>
+      <p>Dialysis</p>
+    </section>
+    <section id="asthma">
+      <h2>Asthma</h2>
+      <p>Breathing issue.</p>
+      <h4>Symptoms</h4>
+      <p>Wheezing</p>
+      <h4>Prevention</h4>
+      <p>Avoid triggers</p>
+      <h4>Treatment</h4>
+      <p>Inhalers</p>
+    </section>
+    <section id="chronic-obstructive-pulmonary-disease">
+      <h2>COPD</h2>
+      <p>Lung disease.</p>
+      <h4>Symptoms</h4>
+      <p>Breathing difficulty</p>
+      <h4>Prevention</h4>
+      <p>No smoking</p>
+      <h4>Treatment</h4>
+      <p>Medication</p>
+    </section>
+    <section id="arthritis">
+      <h2>Arthritis</h2>
+      <p>Joint disease.</p>
+      <h4>Symptoms</h4>
+      <p>Pain</p>
+      <h4>Prevention</h4>
+      <p>Exercise</p>
+      <h4>Treatment</h4>
+      <p>Pain relief</p>
+    </section>
+    <section id="obesity">
+      <h2>Obesity</h2>
+      <p>Excess weight.</p>
+      <h4>Symptoms</h4>
+      <p>Weight gain</p>
+      <h4>Prevention</h4>
+      <p>Exercise</p>
+      <h4>Treatment</h4>
+      <p>Diet</p>
+    </section>
+    <section id="diarrheal-diseases">
+      <h2>Diarrheal Diseases</h2>
+      <p>Digestive issue.</p>
+      <h4>Symptoms</h4>
+      <p>Loose stool</p>
+      <h4>Prevention</h4>
+      <p>Clean water</p>
+      <h4>Treatment</h4>
+      <p>Rehydration</p>
+    </section>
+    <section id="skin-diseases">
+      <h2>Skin Diseases</h2>
+      <p>Skin condition.</p>
+      <h4>Symptoms</h4>
+      <p>Rash</p>
+      <h4>Prevention</h4>
+      <p>Hygiene</p>
+      <h4>Treatment</h4>
+      <p>Creams</p>
+    </section>
+    <section id="eye-infections">
+      <h2>Eye Infections</h2>
+      <p>Eye condition.</p>
+      <h4>Symptoms</h4>
+      <p>Redness</p>
+      <h4>Prevention</h4>
+      <p>Clean hands</p>
+      <h4>Treatment</h4>
+      <p>Drops</p>
+    </section>
+    <section id="dental-caries">
+      <h2>Dental Caries</h2>
+      <p>Tooth decay.</p>
+      <h4>Symptoms</h4>
+      <p>Pain</p>
+      <h4>Prevention</h4>
+      <p>Brush teeth</p>
+      <h4>Treatment</h4>
+      <p>Fillings</p>
+    </section>
+    <section id="anemia">
+      <h2>Anemia</h2>
+      <p>Low blood cells.</p>
+      <h4>Symptoms</h4>
+      <p>Fatigue</p>
+      <h4>Prevention</h4>
+      <p>Iron diet</p>
+      <h4>Treatment</h4>
+      <p>Supplements</p>
+    </section>
+  </body>
+</html>
